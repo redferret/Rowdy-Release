@@ -15,22 +15,60 @@ native func size(collection)
 native func next(iterator)
 native func Iterator(collection)
 
-dynamic func apply(list, applier) <nlist> {
-	list = is list? new []
-	nlist = new []
-	$forEach(list, func(i) <val> { 
-		val = $applier(i)
-		if (val != null) {
-			$add(nlist, val)
-		}
-	})
-	return nlist 
+func isMap(test) {
+	return $equals($type(test), HashMap)
 }
 
-func range(from, to, inc) { 
+func isArrayList(test) {
+	return $equals($type(test), ArrayList)
+}
+
+func flatten(list) {
+	return $apply(list, func(e) {
+		if $isArrayList(e) {
+			return $flatten(e)
+		} else {
+			return e
+		}
+	}, true)
+}
+
+func flattenOnce(list) {
+	return $apply(list, null, true)
+}
+
+dynamic func apply(list, applier, flattenOnce) <nlist> {
+	flattenOnce = is flattenOnce? false
+	list = is list? new []
+	nlist = new []
+	$forEach(list, func(e) <val> {
+		if (is applier?) {
+			val = e
+		} else {
+			val = $applier(e)
+		}
+		if $not(is val?) {
+			if flattenOnce and $isArrayList(val) {
+				$appendTo(nlist, val)
+			} else {
+				$add(nlist, val)
+			}
+		}
+	})
+	return nlist
+}
+
+// Everything in list2 is appended to the end of list1
+func appendTo(list1, list2) {
+	$forEach(list2, func(e) {
+		$add(list1, e)
+	})
+}
+
+func range(from, to, inc) {
 	inc = is inc? 1
 	nlist = new []
-	$forLoop(from, to, inc, func(i) { 
+	$forLoop(from, to, inc, func(i) {
 		$add(nlist, i)
 	})
 	return nlist
