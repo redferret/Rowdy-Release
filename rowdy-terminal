@@ -1,0 +1,3 @@
+#!/bin/zsh
+cd ./dist
+java -jar rowdy.jar

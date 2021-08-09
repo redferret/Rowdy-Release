@@ -1,0 +1,5 @@
+#!/bin/zsh
+cd ./dist
+source="../"$1
+shift
+java -jar rowdy.jar $source $@
