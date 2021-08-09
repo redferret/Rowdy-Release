@@ -1,25 +1,21 @@
-
 import "rowdy.core"
 
 func main(max) {
 	time = $runtime(func() {
-		max = is max? 10
-		print $getList(max), ln
+		$printFibs(is max? 10)
 	})
 	
 	print "Took ", time, " ms to finish", ln
 }
 
-static func getList(max) {
-	list = new []
+func printFibs(max) {
 	x = 0 as long
 	z = 0 as long
 	y = 1 as long
 	$forLoop(0, max, 1, func(){
-		$add(list, x)
+		print x, ln
 		z = x + y
 		x = y
 		y = z
 	})
-	return list
 }
