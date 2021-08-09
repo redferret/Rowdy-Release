@@ -35,7 +35,7 @@ public class Person {
 }
 
 func main() {
-	ppl = new [ new Person("Rich", 32)]
-	p1 = new Person(age: 0, name: "Rich")
+	ppl = [new Person("Rich", 32)]
+	p1 = new Person(0, "Rich")
 	print $ppl[0].getName(), ln
 }

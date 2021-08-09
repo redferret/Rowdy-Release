@@ -12,7 +12,7 @@ func main(fileName, str) {
 		} else if ($contains(line, str)) {
 			occurances += 1
 			print "Line number: ", lineNumber, ln
-			print line, ln
+			print line, ln,ln
 		}
 	}
 	print "Number of lines found: ", occurances, ln
