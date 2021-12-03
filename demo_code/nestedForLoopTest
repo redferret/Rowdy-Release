@@ -8,5 +8,5 @@ func main() {
 			})
 		})
 	}
-	$println(concat "Finished in ", $runtime(p), " ms")
+	print concat "Finished in ", $runtime(p), " ms"
 }

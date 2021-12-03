@@ -2,11 +2,12 @@
 import "rowdy.core"
 
 func main(limit) {
+  limit = is limit? 10
 	$forLoop(0, limit, 1, func(i) {
 		print $fizzBuzz(i), ln
 	})
-	
-	//$forLoop(0, limit, 1, fizzBuzzPrint)
+	print ln, ln
+	$forLoop(0, limit, 1, fizzBuzzPrint)
 }
 
 func fizzBuzzPrint(n) {

@@ -15,6 +15,32 @@ native func size(collection)
 native func next(iterator)
 native func Iterator(collection)
 
+public class Iter {
+	construct(collection) {
+		this.iter = $Iterator(collection)
+		this.collection = collection
+	}
+	public:
+		current = null
+
+		func next() {
+			this.current = $next(this.iter)
+			return this.current
+		}
+		func finished() {
+			return (this.current == null)
+		}
+		func reset() {
+			this.iter = $Iterator(this.collection)
+		}
+		func rep() {
+			return this.collection
+		}
+	private:
+		iter = null
+
+}
+
 dynamic func apply(list, applier) <nlist> {
 	list = is list? new []
 	nlist = new []

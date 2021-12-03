@@ -20,7 +20,7 @@ func f1(){
 }
 
 func f2() {
-	loop x: {
+	loop x: 0 {
 		print x, " - second init\n"
 	  x = 100
 		print x, " - second\n"

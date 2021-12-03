@@ -2,11 +2,15 @@
 	import "rowdy.core"
 	
 	func main(width, height) {
+    if (is width?) or (is height?) {
+      print "Width or Height not defined",ln
+      return 1
+    }
 		print "It took ", $runtime(prog), " ms to finish", ln
 	}
 
 	dynamic func prog() {
-		if width > 50 or height > 50 {
+		if (width > 50) or (height > 50) {
 			print "Max Dimensions: width <= 50, height <= 50", ln
 			return 1
 		}
